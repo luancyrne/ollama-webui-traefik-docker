@@ -1,18 +1,4 @@
 services:
-  traefik:
-    image: "traefik:v3.2"
-    container_name: "traefik"
-    command:
-      - "--configfile=/etc/traefik/traefik.yml"
-    ports:
-      - "443:443"
-      - "8080:8080"
-      - "80:80"
-    volumes:
-      - "./letsencrypt:/letsencrypt"
-      - "./traefik.yml:/etc/traefik/traefik.yml:ro"
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-
   ollama:
     image: ollama/ollama
     container_name: ollama
@@ -52,11 +38,7 @@ services:
             sleep 2
         done
         echo "📥 Pulling models inside Ollama container..."
-        docker exec ollama ollama pull gemma:2b
-        docker exec ollama ollama pull deepseek-r1:1.5b
-
-        docker exec ollama ollama pull qwen2.5-coder:1.5b
-        docker exec ollama ollama pull codegemma:2b
+        docker exec ollama ollama pull qwen:0.5b
 
         echo "✅ Models downloaded. Exiting..."
     restart: "no"
