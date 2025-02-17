@@ -7,7 +7,7 @@ curl  --silent \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer ollama" \
 -d "{
-        \"model\": \"gemma:2b\",
+        \"model\": \"qwen:0.5b\",
         \"temperature\": 0.7,
         \"messages\": [
           {\"role\": \"user\", \"content\": \"$PROMPT\"}
